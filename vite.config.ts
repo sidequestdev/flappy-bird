@@ -1,5 +1,6 @@
 import path from "node:path";
 import { defineConfig } from "vite";
+import { viteSingleFile } from "vite-plugin-singlefile";
 
 const config = defineConfig({
   resolve: {
@@ -10,8 +11,10 @@ const config = defineConfig({
     },
   },
   build: {
+    assetsInlineLimit: 100_000,
     target: "chrome103",
   },
+  plugins: [viteSingleFile()],
 });
 
 export default config;
